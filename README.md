@@ -1,15 +1,24 @@
-# AoEU Template Repo
+# Nginx Playground
 
-This is a template repo all AoEU repos should start with.
+Using Nginx as a reverse proxy for local development
 
-## How To Use This Template
+## Usage
 
-1. Go to the "Create a new repository" page on GitHub
-1. Select this repo as the template in the "Repository template" field
-1. Check the "Include all branches" box
-1. Selct "theartofeducation" as the "Owner" of the repository
-1. Add the repository name
-1. Add a short description for the repository
-1. Select "Public" or "Private" as appropriate for the repository
-1. Click the "Create repository" button
-1. Update files and repository information as needed
+You will need to have docker installed.
+
+https://docs.docker.com/get-docker/
+
+
+```bash
+docker pull nginx
+```
+To pull the latest nginx image
+
+
+```bash
+docker-compose up
+```
+to run the proxy and sample services. It will be available at `localhost:3000`
+
+`/` or `/pro` will redirect to the `pro-service` running in docker
+`/flex` will redirect to the `flex-service` running in docker

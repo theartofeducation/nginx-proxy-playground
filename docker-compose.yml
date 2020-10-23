@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+
+  reverse-proxy:
+    image: nginx
+    container_name: reverse-proxy
+    depends_on:
+        - pro-service
+        - flex-service
+    volumes:
+      - ./reverse-proxy/nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - 3000:80
+
+  pro-service:
+    image: nginx
+    container_name: pro-service
+    volumes:
+        - ./pro/index.html:/usr/share/nginx/html/index.html
+        - ./flex/nginx.conf:/etc/nginx/nginx.conf
+    restart: on-failure
+
+
+  flex-service:
+    image: nginx
+    container_name: flex-service
+    volumes:
+      - ./flex/index.html:/usr/share/nginx/html/index.html
+      - ./flex/nginx.conf:/etc/nginx/nginx.conf
+    restart: on-failure
